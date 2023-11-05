@@ -23,10 +23,16 @@ func findChampion2(n int, edges [][]int) int {
 			queue = append(queue, i)
 		}
 	}
+
+	//变更
+	//if len(queue) == 1 {
+	//	return queue[0]
+	//} else {
+	//	return -1
 	if len(queue) == 1 {
 		return queue[0]
 	} else {
-		return -1
+		return -2
 	}
 
 }
