@@ -32,7 +32,7 @@ func findChampion2(n int, edges [][]int) int {
 	if len(queue) == 1 {
 		return queue[0]
 	} else {
-		return -2
+		return -1
 	}
 
 }
