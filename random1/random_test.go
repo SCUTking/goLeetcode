@@ -16,6 +16,9 @@ func TestLCR163(f *testing.T) {
 func Test143(f *testing.T) {
 	ReorderList(&ListNode{Val: 2, Next: &ListNode{3, &ListNode{Val: 4, Next: &ListNode{Val: 5, Next: nil}}}})
 }
+func Test394(f *testing.T) {
+	DecodeString("3[z]2[2[y]pq4[2[jk]e1[f]]]ef")
+}
 
 func Test73(f *testing.T) {
 	Subsets([]int{1, 2, 3})

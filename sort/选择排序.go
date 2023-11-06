@@ -3,7 +3,7 @@ package sort
 // 每次遍历，记录区间的最大值下标,然后与数组最后一个数交换
 // 优化：一次遍历可以获取到最大值或者最小值
 
-// 时间复杂度平均：O(N^1.3)
+// SelectSort 时间复杂度平均：O(N^1.3)
 // 空间复杂度：O(1)
 func SelectSort(arr []int) []int {
 	n := len(arr)

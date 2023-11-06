@@ -1,6 +1,9 @@
 package main
 
-import "goLeetcode/sort"
+import (
+	"fmt"
+	"goLeetcode/sort"
+)
 
 func main() {
 	//edges := [][]int{}
@@ -20,5 +23,7 @@ func main() {
 	//sort.InsertSort(arr)
 	//sort.ShellSort(arr)
 
-	sort.HeapSort(arr)
+	//sort.HeapSort(arr)
+	mergeSort := sort.MergeSort(arr, 0, len(arr)-1)
+	fmt.Print(mergeSort)
 }
