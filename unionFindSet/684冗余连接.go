@@ -48,3 +48,45 @@ func FindRedundantConnection(edges [][]int) []int {
 	return nil
 
 }
+func FindRedundantConnection1(edges [][]int) []int {
+	parent := make([]int, len(edges)+1)
+	//初始化时，父节点指向自己
+	for i, _ := range parent {
+		parent[i] = i
+	}
+
+	//find 查找某个节点的根节点
+	//可用于判断是否在同一个集合中 判断条件：find(a)==find(b)
+	//
+	var find func(node int) int
+	find = func(node int) int {
+		if parent[node] == node {
+			return node
+		}
+
+		return find(parent[node])
+	}
+
+	//union 判断是否能够合并
+	//如果能够合并  返回成功
+	//如果不能合并  返回false
+	var union func(a int, b int) bool
+	union = func(a int, b int) bool {
+		x := find(a)
+		y := find(b)
+		if x == y {
+			return false
+		}
+		//直接父的根节点相互指向即可
+		parent[x] = y
+		return true
+	}
+
+	for i := 0; i < len(edges); i++ {
+		if !union(edges[i][0], edges[i][1]) {
+			return edges[i]
+		}
+	}
+
+	return nil
+}

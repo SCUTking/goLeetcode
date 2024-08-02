@@ -24,6 +24,10 @@ func Test73(f *testing.T) {
 	Subsets([]int{1, 2, 3})
 }
 
+func Test1523(f *testing.T) {
+	numOfSubarrays([]int{100, 100, 99, 99})
+}
+
 func Test(f *testing.T) {
 	//num := 1
 	//p := &num
@@ -43,4 +47,8 @@ func Test(f *testing.T) {
 	ints := make([]int, 10)
 	fmt.Printf("len %d,cap %d", len(ints), cap(ints))
 
+}
+
+func Test1(f *testing.T) {
+	findOriginalArray([]int{4, 4})
 }

@@ -40,3 +40,19 @@ func SelectSort(arr []int) []int {
 	return arr
 
 }
+
+// 普通写法
+// 注意要用一个index，标识最小或最大的值索引下标，递增的话最小，递减的话使用最大
+func selectionSort(nums []int) {
+	n := len(nums)
+	for i := 0; i < n-1; i++ { //n-1是交换的次数，写成n也不影响
+		k := i
+		//遍历后面的，找到最小的值进行
+		for j := i + 1; j < n; j++ {
+			if nums[k] > nums[j] {
+				k = j
+			}
+		}
+		nums[k], nums[i] = nums[i], nums[k]
+	}
+}

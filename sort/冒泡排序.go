@@ -1,5 +1,7 @@
 package sort
 
+import "fmt"
+
 //时间复杂度：最坏情况：O(N^2)
 //最好情况：O(N)
 //空间复杂度：O(1)
@@ -14,9 +16,7 @@ func BubbleSort(arr []int) []int {
 		flag := false
 		for j := 1; j < n-i; j++ {
 			if arr[j-1] > arr[j] {
-				temp := arr[j]
-				arr[j] = arr[j-1]
-				arr[j-1] = temp
+				arr[j-1], arr[j] = arr[j], arr[j-1]
 				flag = true
 			}
 		}
@@ -24,7 +24,19 @@ func BubbleSort(arr []int) []int {
 			break
 		}
 	}
-
 	return arr
+}
 
+// 普通写法：也是将数组分为两个部分，排序与未排序
+// 通过连续地比较并交换相邻的元素（递增：小于等于不交换，大于交换），就可以将最大的元素放到最右边
+func BubbleSortOne(nums []int) {
+	n := len(nums)
+	for i := 0; i < n; i++ {
+		for j := 0; j < n-i-1; j++ {
+			if nums[j] > nums[j+1] {
+				nums[j], nums[j+1] = nums[j+1], nums[j]
+			}
+		}
+	}
+	fmt.Println(nums)
 }

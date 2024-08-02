@@ -1,5 +1,9 @@
 package random1
 
+import (
+	"fmt"
+)
+
 func Subsets(nums []int) [][]int {
 
 	//ans := make([][]int, 0)
@@ -25,6 +29,7 @@ func Subsets(nums []int) [][]int {
 	//	getSubSet(i)
 	//}
 	//return ans
+
 	ans := make([][]int, 0)
 	preNums := make([]int, 0)
 	var backTrack func(length int)
@@ -33,6 +38,7 @@ func Subsets(nums []int) [][]int {
 			ints := make([]int, len(preNums))
 			copy(ints, preNums)
 			ans = append(ans, ints)
+			return
 		}
 
 		preNums = append(preNums, nums[length])
@@ -42,6 +48,23 @@ func Subsets(nums []int) [][]int {
 		//不加上当前的元素
 		backTrack(length + 1)
 	}
+	backTrack(0)
+	// 创建一个空的 map，用于存储切片的字符串表示以判断是否重复
+	uniqueMap := make(map[string]bool)
 
-	return ans
+	// 创建一个空的切片，用于存储去重后的切片
+	uniqueSliceOfSlice := [][]int{}
+
+	// 遍历切片的切片
+	for _, slice := range ans {
+		// 将切片转换为字符串表示
+		sliceString := fmt.Sprint(slice)
+
+		// 如果切片的字符串表示未存在于 map 中，则将其添加到 map 和结果切片中
+		if _, ok := uniqueMap[sliceString]; !ok {
+			uniqueMap[sliceString] = true
+			uniqueSliceOfSlice = append(uniqueSliceOfSlice, slice)
+		}
+	}
+	return uniqueSliceOfSlice
 }
